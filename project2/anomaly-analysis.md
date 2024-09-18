@@ -109,11 +109,10 @@ The fields above stores multiple string values in the same cell in the form of a
 There exists two tables in your collection which originated from different sources and which have similar data. Moreover, the tables in question use two different identifier systems to refer to the same entity.
 
 ### Applicable Skincare Products Data
-sephora_products identify products with their product_name
-sephora_products_reviews identify products with their product_id. 
+The sephora_products table identifies products using product_name, while the sephora_product_reviews table identifies products with product_id.
 
 ### Explanation
-product_name is the name of the product while product_id is a unique number that identifies the product
+product_name serves as a human readable identifier while product_id is a unique numeric identifier, thus there are two different identifiers for the same product across two tables.
 
 
 ## 10
@@ -122,7 +121,7 @@ There exists a table that models more than one logical entity. This can lead to 
 values within the same table.
 
 ### Applicable Skincare Products Data
-cosmetic_ingredients have fields like ingredient_unique_name and ingredient_common_name which have the same repeated values.
+The sephora_products table contains both brand_id and brand_name which creates redundancy. 
 
 ### Explanation
-The common and unique names of ingredients are the same in the dataset.
+Having both brand_id and brand_name to identify a product's brand is unnecessary since either field alone can uniquely represent the brand. This duplication increases data redundancy.
