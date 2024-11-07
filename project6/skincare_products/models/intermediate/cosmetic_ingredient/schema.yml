@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: Cosmetic_Ingredient
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: ingredient_unique_name
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: ingredient_common_name
+        data_type: string
+      - name: european_pharmacopoeia_name
+        data_type: string
+      - name: cas_no
+        data_type: string
+      - name: ec_no
+        data_type: string
+      - name: regulatory_restriction
+        data_type: string
+      - name: intended_use
+        data_type: string
+      - name: update_date
+        data_type: date

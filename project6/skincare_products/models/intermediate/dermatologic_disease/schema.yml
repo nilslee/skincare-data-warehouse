@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: Dermatologic_Disease
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: disease_name
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: physical_description
+        data_type: string
+      - name: causes
+        data_type: string
+      - name: treatments
+        data_type: ARRAY<STRING>
