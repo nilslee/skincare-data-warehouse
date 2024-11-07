@@ -1,0 +1,29 @@
+with highly_rated_combination_skin as (
+    select
+        p.product_name,
+        avg(r.rating) as average_rating,
+        sum(pr.review_count) as total_reviews
+    from
+        {{ ref('Sephora_Product_Review') }} r
+    join
+        {{ ref('Sephora_Product') }} p
+        on r.product_id = p.product_id
+    join
+        (select
+            product_id,
+            count(*) as review_count
+        from
+            {{ ref('Sephora_Product_Review') }}
+        group by
+            product_id) pr
+        on p.product_id = pr.product_id
+    where
+        r.skin_type = 'combination'
+    group by
+        p.product_name
+    order by
+        average_rating desc
+)
+
+select *
+from highly_rated_combination_skin

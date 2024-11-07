@@ -1,0 +1,216 @@
+version: 2
+
+models:
+  - name: Sephora_Product
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: product_name
+        data_type: string
+      - name: brand_id
+        data_type: string
+      - name: variation_id
+        data_type: integer
+      - name: stock_status_id
+        data_type: integer      
+      - name: price_id
+        data_type: integer
+      - name: size_id
+        data_type: integer
+      - name: rating
+        data_type: float
+      - name: reviews
+        data_type: integer
+      - name: loves_count
+        data_type: integer
+  - name: Brand
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: brand_id
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: brand_name
+        data_type: string  
+  - name: Category
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: category_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: category_name
+        data_type: string
+  - name: Feature_Highlight
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: highlight_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: feature_highlight
+        data_type: string
+  - name: Product_Category
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: category_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+  - name: Product_Highlight
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: highlight_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+  - name: Product_Ingredient
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: ingredient_unique_name
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+  - name: Product_Price
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: price_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        data_type: string
+      - name: price_usd
+        data_type: float
+      - name: value_price_usd
+        data_type: float
+      - name: sale_price_usd
+        data_type: float
+  - name: Product_Size
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: size_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        data_type: string
+      - name: other_size
+        data_type: string
+      - name: imperial_size
+        data_type: string
+      - name: metric_size
+        data_type: string
+  - name: Product_Stock_Status
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: stock_status_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        data_type: string
+      - name: limited_edition
+        data_type: boolean
+      - name: new_product
+        data_type: boolean
+      - name: online_only
+        data_type: boolean
+      - name: out_of_stock
+        data_type: boolean
+      - name: sephora_exclusive
+        data_type: boolean
+  - name: Product_Variation
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: variation_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: product_id
+        data_type: string
+      - name: variation_count
+        data_type: integer
+      - name: variation_max_price
+        data_type: float
+      - name: variation_min_price
+        data_type: float
