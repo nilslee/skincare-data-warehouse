@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_Dermatologic_Disease
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: id
+        data_type: string
+      - name: disease_name
+        data_type: string
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: physical_description
+        data_type: string
+      - name: causes
+        data_type: string
+      - name: treatments
+        data_type: ARRAY<STRING>
+      - name: _load_time
+        data_type: timestamp

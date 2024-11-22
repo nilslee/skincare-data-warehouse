@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: skincare_products_raw
+    database: segfault-434120
+    schema: inc_skincare_products_raw
+    tables:
+      - name: cosmetic_ingredient
+      - name: dermatologic_disease
+      - name: sephora_product
+      - name: sephora_product_review

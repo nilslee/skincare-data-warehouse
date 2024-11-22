@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: int_Disease_Ingredient_Treatment
+    description: 'Table to map diseases with their treatment ingredients'
+    config:
+      contract:
+        enforced: true
+    constraints:
+      - type: primary_key
+        columns: [disease_name, ingredient_unique_name]
+    columns:
+      - name: disease_name
+        description: 'Name of the dermatologic disease'
+        data_type: string
+        tests:
+          - not_null
+      - name: ingredient_unique_name
+        description: 'Unique name of the ingredient used in treatment'
+        data_type: string
+        tests:
+          - not_null
+      - name: _load_time
+        data_type: timestamp
