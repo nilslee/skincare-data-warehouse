@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: int_Sephora_Product_Review
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: review_id
+        data_type: integer
+        constraints:
+          - type: primary_key
+        tests:
+          - unique
+          - not_null
+      - name: author_id
+        data_type: integer
+      - name: rating
+        data_type: integer
+      - name: is_recommended
+        data_type: boolean
+      - name: helpfulness
+        data_type: float
+      - name: review_feedback_count
+        data_type: integer
+      - name: review_upvote_count
+        data_type: integer
+      - name: review_downvote_count
+        data_type: integer
+      - name: submission_time
+        data_type: string
+      - name: review_text
+        data_type: string
+      - name: review_title
+        data_type: string
+      - name: skin_tone
+        data_type: string
+      - name: new_eye_color
+        data_type: string
+      - name: skin_type
+        data_type: string
+      - name: hair_color
+        data_type: string
+      - name: product_id
+        data_type: string
+        constraints:
+          - type: foreign_key
+            to: inc_skincare_products_int.int_Sephora_Product
+            to_columns: [product_id]
+        tests:
+          - relationships:
+              to: ref('int_Sephora_Product')
+              field: product_id
+      - name: price_usd
+        data_type: float
+      - name: brand_id
+        data_type: string
+        constraints:
+          - type: foreign_key
+            to: inc_skincare_products_int.int_Brand
+            to_columns: [brand_id]
+        tests:
+          - relationships:
+              to: ref('int_Brand')
+              field: brand_id
